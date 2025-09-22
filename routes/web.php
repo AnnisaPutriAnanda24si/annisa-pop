@@ -14,7 +14,7 @@ Route::get('/pcr', function () {
 
 // Route::get('/mahasiswa/{$param1}', function () {
 //     return 'Halo Mahasiswa';
-// });
+// });test
 
 // Route::get('/mahasiswa/{param1}', [MahasiswaController::class, 'show']);
 Route::get('/mahasiswa/{param1?}', [MahasiswaController::class, 'show'])->name('mahasiswa.show');
