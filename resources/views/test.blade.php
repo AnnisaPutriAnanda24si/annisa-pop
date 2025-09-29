@@ -8,8 +8,8 @@
 <body>
     <h1>Data Pegawai</h1>
 
-    <p>Nama:{{ $name }}</p>
-    <p>Umur:{{ $my_age }} tahun</p>
+    <p>Nama: {{ $name }}</p>
+    <p>Umur: {{ $my_age }} tahun</p>
 
     <h3>Hobi:</h3>
     <ul>
@@ -18,13 +18,13 @@
         @endforeach
     </ul>
 
-    <p>Tanggal Harus Wisuda:{{ $tgl_harus_wisuda }}</p>
-    <p>Jarak Hari ke Wisuda:{{ $time_to_study_left }} hari lagi</p>
+    <p>Tanggal Harus Wisuda: {{ $tgl_harus_wisuda }}</p>
+    <p>Jarak Hari ke Wisuda: {{ $time_to_study_left }} hari lagi</p>
 
-    <p>Semester Saat Ini:{{ $current_semester }}</p>
-    <p>Pesan:{{ $semester_message }}</p>
+    <p>Semester Saat Ini: {{ $current_semester }}</p>
+    <p>Pesan: {{ $semester_message }}</p>
 
-    <p>Cita-cita:{{ $future_goal }}</p>
+    <p>Cita-cita: {{ $future_goal }}</p>
 
 </body>
 </html>
