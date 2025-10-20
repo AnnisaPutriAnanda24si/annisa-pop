@@ -113,7 +113,7 @@
         <div class="row">
 
             <div class="col-12 mb-4">
-                <form action="{{ route('pelanggan.store') }}" method="POST">
+                <form action="{{ route('user.store') }}" method="POST">
                     @csrf
                     <div class="card border-0 shadow components-section">
                         <div class="card-body">
@@ -126,60 +126,13 @@
                                 <!-- First Name -->
                                 <div class="col-lg-4 col-sm-6">
                                     <div class="mb-3">
-                                        <label for="firstName">First name</label>
-                                        <input type="text" class="form-control" id="firstName" name="first_name"
-                                            placeholder="Enter first name" value="{{ old('first_name') }}" required>
+                                        <label for="firstName">Name</label>
+                                        <input type="text" class="form-control" id="firstName" name="name"
+                                            placeholder="Enter name" value="{{ old('name') }}" required>
                                     </div>
                                 </div>
 
-                                <!-- Last Name -->
-                                <div class="col-lg-4 col-sm-6">
-                                    <div class="mb-3">
-                                        <label for="lastName">Last name</label>
-                                        <input type="text" class="form-control" id="lastName" name="last_name"
-                                            placeholder="Enter last name" value="{{ old('last_name') }}" required>
-                                    </div>
-                                </div>
-
-                                <!-- Birthday -->
-                                <div class="col-lg-4 col-sm-6">
-                                    <div class="mb-3">
-                                        <label for="birthday">Birthday</label>
-                                        <div class="input-group">
-                                            <span class="input-group-text">
-                                                <svg class="icon icon-xs text-gray-600" fill="currentColor"
-                                                    viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                                    <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2
-                                        2v10a2 2 0 002 2h12a2 2 0
-                                        002-2V6a2 2 0 00-2-2h-1V3a1
-                                        1 0 10-2 0v1H7V3a1 1 0
-                                        00-1-1zm0 5a1 1 0 000 2h8a1
-                                        1 0 100-2H6z" clip-rule="evenodd">
-                                                    </path>
-                                                </svg>
-                                            </span>
-                                            <input type="date" class="form-control" id="birthday"
-                                                name="birthday" placeholder="dd/mm/yyyy"
-                                                value="{{ old('birthday') }}"required>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Gender -->
-                                <div class="col-lg-4 col-sm-6">
-                                    <div class="mb-3">
-                                        <label for="gender">Gender</label>
-                                        <select class="form-select" id="gender" name="gender"
-                                            value="{{ old('gender') }}" required>
-                                            <option selected disabled>-- Pilih --</option>
-                                            <option value="Male">Male</option>
-                                            <option value="Felame">Female</option>
-                                            <option value="Other">Lainnya</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <!-- Email -->
+                                                                <!-- Email -->
                                 <div class="col-lg-4 col-sm-6">
                                     <div class="mb-3">
                                         <label for="email">Email</label>
@@ -188,15 +141,22 @@
                                     </div>
                                 </div>
 
-                                <!-- Phone -->
+                                                                                                <!-- Email -->
                                 <div class="col-lg-4 col-sm-6">
                                     <div class="mb-3">
-                                        <label for="phone">Phone</label>
-                                        <input type="text" class="form-control" id="phone" name="phone"
-                                            placeholder="Enter phone number" value="{{ old('phone') }}" required>
+                                        <label for="email">Password</label>
+                                        <input type="password" class="form-control" id="password" name="password"
+                                            placeholder="Enter password" value="{{ old('password') }}" required>
                                     </div>
                                 </div>
-                            </div>
+
+                                                                <div class="col-lg-4 col-sm-6">
+                                    <div class="mb-3">
+                                        <label for="email">Password Confirmation</label>
+                                        <input type="password" class="form-control" id="password-confirmation" name="password_confirmation"
+                                            placeholder="Enter password confirmation" }}" required>
+                                    </div>
+                                </div>
 
                             <!-- Buttons -->
                             <div class="d-flex justify-content-end">
@@ -210,43 +170,7 @@
             </div>
         </div>
 
-        {{-- <div class="theme-settings card bg-gray-800 pt-2 collapse" id="theme-settings">
-            <div class="card-body bg-gray-800 text-white pt-4">
-                <button type="button" class="btn-close theme-settings-close" aria-label="Close"
-                    data-bs-toggle="collapse" href="#theme-settings" role="button" aria-expanded="false"
-                    aria-controls="theme-settings"></button>
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <p class="m-0 mb-1 me-4 fs-7">Open source <span role="img" aria-label="gratitude">💛</span>
-                    </p>
-                    <a class="github-button" href="https://github.com/themesberg/volt-bootstrap-5-dashboard"
-                        data-color-scheme="no-preference: dark; light: light; dark: light;" data-icon="octicon-star"
-                        data-size="large" data-show-count="true"
-                        aria-label="Star themesberg/volt-bootstrap-5-dashboard on GitHub">Star</a>
-                </div>
-                <a href="https://themesberg.com/product/admin-dashboard/volt-bootstrap-5-dashboard" target="_blank"
-                    class="btn btn-secondary d-inline-flex align-items-center justify-content-center mb-3 w-100">
-                    Download
-                    <svg class="icon icon-xs ms-2" fill="currentColor" viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M2 9.5A3.5 3.5 0 005.5 13H9v2.586l-1.293-1.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 15.586V13h2.5a4.5 4.5 0 10-.616-8.958 4.002 4.002 0 10-7.753 1.977A3.5 3.5 0 002 9.5zm9 3.5H9V8a1 1 0 012 0v5z"
-                            clip-rule="evenodd"></path>
-                    </svg>
-                </a>
-                <p class="fs-7 text-gray-300 text-center">Available in the following technologies:</p>
-                <div class="d-flex justify-content-center">
-                    <a class="me-3" href="https://themesberg.com/product/admin-dashboard/volt-bootstrap-5-dashboard"
-                        target="_blank">
-                        <img src="{{ asset('assets-admin') }}/img/technologies/bootstrap-5-logo.svg"
-                            class="image image-xs">
-                    </a>
-                    <a href="https://demo.themesberg.com/volt-react-dashboard/#/" target="_blank">
-                        <img src="{{ asset('assets-admin') }}/img/technologies/react-logo.svg"
-                            class="image image-xs">
-                    </a>
-                </div>
-            </div>
-        </div> --}}
+
 
         <div class="card theme-settings bg-gray-800 theme-settings-expand" id="theme-settings-expand">
             <div class="card-body bg-gray-800 text-white rounded-top p-3 py-2">
