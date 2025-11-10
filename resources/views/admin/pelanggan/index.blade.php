@@ -4,6 +4,7 @@
         {{-- start main content --}}
 
         <div class="py-4">
+
             <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
                 <ol class="breadcrumb breadcrumb-dark breadcrumb-transparent">
                     <li class="breadcrumb-item">
@@ -20,6 +21,7 @@
                     <li class="breadcrumb-item active" aria-current="page">Pelanggan / Tabel Pelanggan</li>
                 </ol>
             </nav>
+
             <div class="d-flex justify-content-between w-100 flex-wrap">
                 <div class="mb-3 mb-lg-0">
                     <h1 class="h4">Data Pelanggan</h1>
@@ -28,9 +30,47 @@
                 <div>
                     <a href="pelanggan.index" class="btn btn-primary"><i class="far fa-question-circle me-1"></i>
                         Tambah Pelanggan </a>
+
                 </div>
             </div>
         </div>
+           <div class="row">
+            <div class="col-12 mb-4">
+                <div class="card border-0 shadow mb-4">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="table-pelanggan" class="table table-centered table-nowrap mb-0 rounded">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th class="border-0">First Name</th>
+                                        <th class="border-0">Last Name</th>
+                                        <th class="border-0">Birthday</th>
+                                        <th class="border-0">Gender</th>
+                                        <th class="border-0">Email</th>
+                                        <th class="border-0">Phone</th>
+                                        <th class="border-0 rounded-end">Action</th>
+                                    </tr>
+                                </thead>
+<tbody>
+    @foreach($dataPelanggan as $item)
+        <tr>
+            <td>{{ $item->firstname }}</td>
+            <td>{{ $item->last_name }}</td>
+            <td>{{ $item->birhday }}</td>
+            <td>{{ $item->gender }}</td>
+            <td>{{ $item->email }}</td>
+            <td>{{ $item->phone }}</td>
+            <td>Tombol Edit & Tombol Hapus</td>
+        </tr>
+    @endforeach
+</tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         {{-- end main content --}}
 @endsection
 
