@@ -7,9 +7,13 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-	$data['user'] = User::all();
+    $filterableColumns = ['email'];
+    $searchableColumns = ['name', 'email'];
+	$data['user'] = User::filter($request, $filterableColumns)
+					->paginate(10)
+					->withQueryString();
 		return view('user.index',$data);
     }
 
