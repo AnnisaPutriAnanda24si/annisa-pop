@@ -11,7 +11,8 @@ class UserController extends Controller
     {
     $filterableColumns = ['email'];
     $searchableColumns = ['name', 'email'];
-	$data['user'] = User::filter($request, $filterableColumns)
+	$data['user'] = User::filter($request, $filterableColumns, $searchableColumns)
+                    ->search($request, $searchableColumns)
 					->paginate(10)
 					->withQueryString();
 		return view('user.index',$data);

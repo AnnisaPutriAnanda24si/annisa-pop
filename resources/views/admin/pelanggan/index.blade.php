@@ -40,11 +40,10 @@
                 <div class="card-body">
                     <div class="table-responsive">
 
-                        <form method="GET" action="{{ route('pelanggan.index') }}" onchange="this.form.submit()"
-                            class="mb-3">
+                        <form method="GET" action="{{ route('pelanggan.index') }}" class="mb-3">
                             <div class="row">
                                 <div class="col-md-2">
-                                    <select name="gender" class="form-select">
+                                    <select name="gender" class="form-select" onchange="this.form.submit()">
                                         <option value="">All</option>
                                         <option value="Male" {{ request('gender') == 'Male' ? 'selected' : '' }}>Male
                                         </option>
@@ -95,7 +94,15 @@
                                         <td>{{ $item->gender }}</td>
                                         <td>{{ $item->email }}</td>
                                         <td>{{ $item->phone }}</td>
-                                        <td>Tombol Edit & Tombol Hapus</td>
+                                        <td><button type="button" class="btn btn-sm btn-primary me-2" title="Edit">
+                                                <i class="bi bi-pencil-fill"></i>
+                                            </button>
+
+                                            <!-- Delete Button -->
+                                            <button type="button" class="btn btn-sm btn-danger" title="Hapus">
+                                                <i class="bi bi-trash-fill"></i>
+                                            </button>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>

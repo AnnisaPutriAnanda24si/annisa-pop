@@ -16,11 +16,11 @@ public function run()
     {
         $faker = Factory::create('id_ID');
 
-        foreach (range(1, 900) as $index) {
+        foreach (range(1, 1000) as $index) {
             DB::table('users')->insert([
-                'name'      => $faker->name(),      // nama orang Indonesia
+                'name'      => $faker->name(),
                 'email'     => $faker->unique()->safeEmail(),
-                'password'  => Hash::make('password123'), // password default
+                'password'  => Hash::make('password123'),
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

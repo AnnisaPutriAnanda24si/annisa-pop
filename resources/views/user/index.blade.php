@@ -92,7 +92,14 @@
                                         <td>{{ $item->email }}</td>
                                         <td>{{ $item->password }}</td>
                                         <td>
-                                            Tombol Edit & Tombol Hapus
+                                            <button type="button" class="btn btn-sm btn-primary me-2" title="Edit">
+                                                <i class="bi bi-pencil-fill"></i>
+                                            </button>
+
+                                            <!-- Delete Button -->
+                                            <button type="button" class="btn btn-sm btn-danger" title="Hapus">
+                                                <i class="bi bi-trash-fill"></i>
+                                            </button>
                                         </td>
                                     </tr>
                                 @endforeach

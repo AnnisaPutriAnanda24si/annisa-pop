@@ -12,7 +12,7 @@ class CreatePelangganDummy extends Seeder
     /**
      * Run the database seeds.
      */
-    public function run(): void
+    public function run()
     {
         $faker = Factory::create('id_ID');
 
