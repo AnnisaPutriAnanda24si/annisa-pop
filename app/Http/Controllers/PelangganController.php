@@ -10,15 +10,15 @@ class PelangganController extends Controller
      * Display a listing of the resource.
      */
 
-public function index(Request $request){
-        $filterableColumns = ['gender'];
-        $searchableColumns = ['first_name','last_name','email']; //sesuai kolom Pelanggan
-		$data['dataPelanggan'] = Pelanggan::filter($request, $filterableColumns)
-                    ->search($request, $searchableColumns)
-					->paginate(10)
-					->withQueryString();
-		return view('admin.pelanggan.index',$data);
-}
+    public function index(Request $request){
+            $filterableColumns = ['gender'];
+            $searchableColumns = ['first_name','last_name','email']; //sesuai kolom Pelanggan
+            $data['dataPelanggan'] = Pelanggan::filter($request, $filterableColumns)
+                        ->search($request, $searchableColumns)
+                        ->paginate(10)
+                        ->withQueryString();
+            return view('admin.pelanggan.index',$data);
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -43,7 +43,7 @@ public function index(Request $request){
 
         Pelanggan::create($data);
 
-        return redirect()->back()->with('success', 'Penambahan Data Berhasil!');
+        return redirect()->route('pelanggan.index')->with('success', 'Penambahan Data Berhasil!');
     }
 
     /**
@@ -59,7 +59,8 @@ public function index(Request $request){
      */
     public function edit(string $id)
     {
-        //
+        $pelanggan = Pelanggan::findOrFail($id);
+        return view('admin.pelanggan.edit', compact('pelanggan'));
     }
 
     /**
@@ -67,7 +68,31 @@ public function index(Request $request){
      */
     public function update(Request $request, string $id)
     {
-        //
+        // Validasi optional (boleh ditambah jika perlu)
+        $request->validate([
+            'first_name' => 'required|string|max:100',
+            'last_name'  => 'required|string|max:100',
+            'birthday'   => 'required|date',
+            'gender'     => 'required',
+            'email'      => 'required|email',
+            'phone'      => 'required'
+        ]);
+
+        // Ambil data berdasarkan ID
+        $pelanggan = Pelanggan::findOrFail($id);
+
+        // Data untuk update
+        $data['first_name'] = $request->first_name;
+        $data['last_name']  = $request->last_name;
+        $data['birthday']   = $request->birthday;
+        $data['gender']     = $request->gender;
+        $data['email']      = $request->email;
+        $data['phone']      = $request->phone;
+
+        // Proses update
+        $pelanggan->update($data);
+
+        return redirect()->route('pelanggan.index')->with('success', 'Update Data Berhasil!');
     }
 
     /**

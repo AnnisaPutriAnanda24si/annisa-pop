@@ -39,7 +39,7 @@ class UserController extends Controller
 
         User::create($data);
 
-        return redirect()->back()->with('success', 'Penambahan Data Berhasil!');
+        return redirect()->route('user.index')->with('success', 'Penambahan Data Berhasil!');
     }
 
     /**
@@ -55,16 +55,29 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $user = User::findOrFail($id);
+        return view('user.edit', compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $user = User::findOrFail($id);
+        $data['name']  = $request->name;
+        $data['email'] = $request->email;
+
+        // kalau password diisi, baru update
+        if ($request->filled('password')) {
+            $data['password'] = Hash::make($request->password);
+        }
+
+        $user->update($data);
+
+        return redirect()->route('user.index')->with('success', 'Perubahan Data Berhasil!');
     }
+
 
     /**
      * Remove the specified resource from storage.

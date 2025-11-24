@@ -93,12 +93,15 @@
                                         <td>{{ $item->password }}</td>
                                         <td>
                                             <button type="button" class="btn btn-sm btn-primary me-2" title="Edit">
-                                                <i class="bi bi-pencil-fill"></i>
+                                                <a href="{{ route('user.edit', $item->id) }}">
+                                                    <i class="bi bi-pencil-square"></i>
+                                                    Edit
+                                                </a>
                                             </button>
 
                                             <!-- Delete Button -->
                                             <button type="button" class="btn btn-sm btn-danger" title="Hapus">
-                                                <i class="bi bi-trash-fill"></i>
+                                                <i class="bi bi-trash-fill"></i>Hapus
                                             </button>
                                         </td>
                                     </tr>

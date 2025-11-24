@@ -33,8 +33,10 @@
     <div class="row">
 
         <div class="col-12 mb-4">
-            <form action="{{ route('user.store') }}" method="POST">
+            <form action="{{ route('pelanggan.update', $pelanggan->pelanggan_id) }}" method="POST">
                 @csrf
+                @method('PUT')
+
                 <div class="card border-0 shadow components-section">
                     <div class="card-body">
                         @if (session('success'))
@@ -42,13 +44,50 @@
                                 {!! session('success') !!}
                             </div>
                         @endif
+
                         <div class="row mb-4">
                             <!-- First Name -->
                             <div class="col-lg-4 col-sm-6">
                                 <div class="mb-3">
-                                    <label for="firstName">Name</label>
-                                    <input type="text" class="form-control" id="firstName" name="name"
-                                        placeholder="Enter name" value="{{ old('name') }}" required>
+                                    <label for="firstName">First name</label>
+                                    <input type="text" class="form-control" id="firstName" name="first_name"
+                                        placeholder="Enter first name"
+                                        value="{{ old('first_name', $pelanggan->first_name) }}" required>
+                                </div>
+                            </div>
+
+                            <!-- Last Name -->
+                            <div class="col-lg-4 col-sm-6">
+                                <div class="mb-3">
+                                    <label for="lastName">Last name</label>
+                                    <input type="text" class="form-control" id="lastName" name="last_name"
+                                        placeholder="Enter last name" value="{{ old('last_name', $pelanggan->last_name) }}"
+                                        required>
+                                </div>
+                            </div>
+
+                            <!-- Birthday -->
+                            <div class="col-lg-4 col-sm-6">
+                                <div class="mb-3">
+                                    <label for="birthday">Birthday</label>
+                                    <input type="date" class="form-control" id="birthday" name="birthday"
+                                        value="{{ old('birthday', $pelanggan->birthday) }}" required>
+                                </div>
+                            </div>
+
+                            <!-- Gender -->
+                            <div class="col-lg-4 col-sm-6">
+                                <div class="mb-3">
+                                    <label for="gender">Gender</label>
+                                    <select class="form-select" id="gender" name="gender" required>
+                                        <option disabled>-- Pilih --</option>
+                                        <option value="Male" {{ $pelanggan->gender == 'Male' ? 'selected' : '' }}>Male
+                                        </option>
+                                        <option value="Female" {{ $pelanggan->gender == 'Female' ? 'selected' : '' }}>Female
+                                        </option>
+                                        <option value="Other" {{ $pelanggan->gender == 'Other' ? 'selected' : '' }}>Other
+                                        </option>
+                                    </select>
                                 </div>
                             </div>
 
@@ -57,38 +96,35 @@
                                 <div class="mb-3">
                                     <label for="email">Email</label>
                                     <input type="email" class="form-control" id="email" name="email"
-                                        placeholder="Enter email" value="{{ old('email') }}" required>
+                                        placeholder="Enter email" value="{{ old('email', $pelanggan->email) }}" required>
                                 </div>
                             </div>
 
-                            <!-- Email -->
+                            <!-- Phone -->
                             <div class="col-lg-4 col-sm-6">
                                 <div class="mb-3">
-                                    <label for="email">Password</label>
-                                    <input type="password" class="form-control" id="password" name="password"
-                                        placeholder="Enter password" value="{{ old('password') }}" required>
+                                    <label for="phone">Phone</label>
+                                    <input type="text" class="form-control" id="phone" name="phone"
+                                        placeholder="Enter phone number" value="{{ old('phone', $pelanggan->phone) }}"
+                                        required>
                                 </div>
-                            </div>
-
-                            <div class="col-lg-4 col-sm-6">
-                                <div class="mb-3">
-                                    <label for="email">Password Confirmation</label>
-                                    <input type="password" class="form-control" id="password-confirmation"
-                                        name="password_confirmation" placeholder="Enter password confirmation" required>
-                                </div>
-                            </div>
-
-                            <!-- Buttons -->
-                            <div class="d-flex justify-content-end">
-                                <button type="submit" class="btn btn-dark me-2">Simpan</button>
-                                <button type="reset" class="btn btn-outline-warning">Batal</button>
                             </div>
                         </div>
+
+                        <!-- Buttons -->
+                        <div class="d-flex justify-content-end">
+                            <button type="submit" class="btn btn-dark me-2">Update</button>
+                            <a href="{{ route('pelanggan.index') }}" class="btn btn-outline-warning">Batal</a>
+                        </div>
                     </div>
+                </div>
             </form>
+
 
         </div>
     </div>
+
+
     <div class="card theme-settings bg-gray-800 theme-settings-expand" id="theme-settings-expand">
         <div class="card-body bg-gray-800 text-white rounded-top p-3 py-2">
             <span class="fw-bold d-inline-flex align-items-center h6">
@@ -101,5 +137,6 @@
             </span>
         </div>
     </div>
+
     {{-- end main content --}}
 @endsection

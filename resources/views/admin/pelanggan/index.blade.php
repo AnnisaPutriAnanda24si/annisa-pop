@@ -28,7 +28,8 @@
                 <p class="mb-0">Tabel dari list pelanggan</p>
             </div>
             <div>
-                <a href="pelanggan.index" class="btn btn-primary"><i class="far fa-question-circle me-1"></i>
+                <a href="{{ route('pelanggan.create') }}" class="btn btn-primary"><i
+                        class="far fa-question-circle me-1"></i>
                     Tambah Pelanggan </a>
 
             </div>
@@ -94,8 +95,12 @@
                                         <td>{{ $item->gender }}</td>
                                         <td>{{ $item->email }}</td>
                                         <td>{{ $item->phone }}</td>
-                                        <td><button type="button" class="btn btn-sm btn-primary me-2" title="Edit">
-                                                <i class="bi bi-pencil-fill"></i>
+                                        <td>
+                                            <button type="button" class="btn btn-sm btn-primary me-2" title="Edit">
+                                                <a href="{{ route('pelanggan.edit', $item->pelanggan_id) }}">
+                                                    <i class="bi bi-pencil-square"></i>
+                                                    Edit
+                                                </a>
                                             </button>
 
                                             <!-- Delete Button -->
