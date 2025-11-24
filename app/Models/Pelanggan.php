@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Multipleuploads;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -36,5 +37,9 @@ class Pelanggan extends Model
             }
         });
     }
+}
+public function uploads()
+{
+    return $this->hasMany(Multipleuploads::class, 'pelanggan_id', 'pelanggan_id');
 }
 }

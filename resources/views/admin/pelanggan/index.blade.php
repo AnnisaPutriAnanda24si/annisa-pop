@@ -89,6 +89,13 @@
                             <tbody>
                                 @foreach ($dataPelanggan as $item)
                                     <tr>
+                                        <td>
+
+                                            <button type="button" class="btn btn-sm btn-primary me-2" title="Detail"> <a
+                                                    href="{{ route('pelanggan.show', $item->pelanggan_id) }}"> <i
+                                                        class="bi bi-pencil-square"></i> Edit </a> </button>
+
+                                        </td>
                                         <td>{{ $item->first_name }}</td>
                                         <td>{{ $item->last_name }}</td>
                                         <td>{{ $item->birthday }}</td>

@@ -9,6 +9,7 @@ use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\PelangganController;
+use App\Http\Controllers\MultipleuploadsController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -59,5 +60,8 @@ Route::get('/about', function(){
 
 Route::resource('pelanggan', PelangganController::class);
 Route::resource('user', UserController::class);
+Route::resource('multipleuploads', MultipleuploadsController::class);
+
+
 
 

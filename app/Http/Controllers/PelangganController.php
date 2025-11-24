@@ -51,7 +51,10 @@ class PelangganController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $pelanggan = Pelanggan::findOrFail($id);
+        $files = $pelanggan->uploads()->get();
+        return view('admin.pelanggan.show', compact('pelanggan', 'files'));
+
     }
 
     /**
@@ -88,6 +91,17 @@ class PelangganController extends Controller
         $data['gender']     = $request->gender;
         $data['email']      = $request->email;
         $data['phone']      = $request->phone;
+
+            // Upload multiple files jika ada
+        if($request->hasFile('files')) {
+            foreach($request->file('files') as $file) {
+                $path = $file->store('pelanggan_files', 'public');
+                $pelanggan->uploads()->create([
+                    'filename' => $path,
+                ]);
+            }
+        }
+
 
         // Proses update
         $pelanggan->update($data);

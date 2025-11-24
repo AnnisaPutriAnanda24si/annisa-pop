@@ -78,6 +78,7 @@
                         <table id="table-user" class="table table-centered table-nowrap mb-0 rounded">
                             <thead class="thead-light">
                                 <tr>
+                                    <th class="border-0">Detail</th>
                                     <th class="border-0">Name</th>
                                     <th class="border-0">Email</th>
                                     <th class="border-0">Password</th>
@@ -88,6 +89,21 @@
                             <tbody>
                                 @foreach ($user as $item)
                                     <tr>
+                                        <td>
+
+                                            <a href="{{ route('user.show', $item->id) }}" title="Lihat Profil">
+                                                @if ($item->profile_picture)
+                                                    <img src="{{ Storage::url($item->profile_picture) }}" alt="Profile"
+                                                        class="rounded-circle" width="40" height="40"
+                                                        style="object-fit: cover; border: 1px solid #ddd;">
+                                                @else
+                                                    <img src="https://www.shutterstock.com/image-vector/avatar-gender-neutral-silhouette-vector-600nw-2470054311.jpg"
+                                                        alt="No Profile" class="rounded-circle" width="40"
+                                                        height="40" style="object-fit: cover; border: 1px solid #ddd;">
+                                                @endif
+                                            </a>
+
+                                        </td>
                                         <td>{{ $item->name }}</td>
                                         <td>{{ $item->email }}</td>
                                         <td>{{ $item->password }}</td>

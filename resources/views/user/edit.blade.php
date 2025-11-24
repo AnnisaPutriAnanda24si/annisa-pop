@@ -34,7 +34,7 @@
     <div class="row">
         <div class="col-12 mb-4">
 
-            <form action="{{ route('user.update', $user->id) }}" method="POST">
+            <form action="{{ route('user.update', $user->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
@@ -46,6 +46,15 @@
                         @endif
 
                         <div class="row mb-4">
+
+                            {{-- profile --}}
+                            <div class="col-lg-4 col-sm-6">
+                                <div class="mb-3">
+                                    <label for="profile_picture">Profile Picture:</label>
+                                    <input type="file" name="profile_picture" id="profile_picture">
+                                </div>
+                            </div>
+
 
                             <!-- Name -->
                             <div class="col-lg-4 col-sm-6">
