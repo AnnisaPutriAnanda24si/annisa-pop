@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PegawaiController;
@@ -57,6 +58,10 @@ Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard'
 Route::get('/about', function(){
     return view('halaman-about');
 });
+
+Route::get('/logout',[AuthController::class,'logout'])->name('auth.logout');
+Route::post('/login',[AuthController::class,'login'])->name('auth.login');
+Route::get('/auth',[AuthController::class,'index'])->name('auth.auth');
 
 Route::resource('pelanggan', PelangganController::class);
 Route::resource('user', UserController::class);
