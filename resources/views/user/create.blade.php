@@ -70,6 +70,25 @@
                                 </div>
                             </div>
 
+                                                        {{-- role --}}
+                            <div class="col-lg-4 col-sm-6">
+                                <div class="mb-3">
+                                    <label for="form-select">Role</label>
+                                    <select name="role" class="form-select" id="role" required>
+                                        <option selected disabled value="">Chose Role</option>
+                                        <option value="Super Admin">
+                                            Super Admin
+                                        </option>
+                                        <option value="Pelanggan">
+                                            Pelanggan
+                                        </option>
+                                        <option value="Mitra">
+                                            Mitra
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
                             <div class="col-lg-4 col-sm-6">
                                 <div class="mb-3">
                                     <label for="email">Password Confirmation</label>

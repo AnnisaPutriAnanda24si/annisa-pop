@@ -13,9 +13,9 @@ class UserController extends Controller
 {
     public function index(Request $request)
     {
-        if (!Auth::check()) {
-            return redirect()->route('auth.auth');
-        }
+        // if (!Auth::check()) {
+        //     return redirect()->route('auth.auth');
+        // }
     $filterableColumns = ['email'];
     $searchableColumns = ['name', 'email'];
 	$data['user'] = User::filter($request, $filterableColumns, $searchableColumns)
@@ -41,6 +41,7 @@ class UserController extends Controller
         // dd($request->all());
         $data['name']                  = $request->name;
         $data['email']                 = $request->email;
+        $data['role']                 = $request->role;
         $data['password']              = Hash::make($request->password);
         $data['password_confirmation'] = $request->password_confirmation;
 
@@ -83,6 +84,8 @@ class UserController extends Controller
 
         $data['name']  = $validated['name'];
         $data['email'] = $validated['email'];
+         $data['role'] = $validated['role'];
+
 
         // kalo pw diisi, ubah pw lama
         if (!empty($validated['password'])) {

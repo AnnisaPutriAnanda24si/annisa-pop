@@ -64,7 +64,7 @@ Route::post('/login',[AuthController::class,'login'])->name('auth.login');
 Route::get('/auth',[AuthController::class,'index'])->name('auth.auth');
 
 Route::resource('pelanggan', PelangganController::class);
-Route::resource('user', UserController::class);
+Route::resource('user', UserController::class)->middleware('checkislogin');
 Route::resource('multipleuploads', MultipleuploadsController::class);
 
 
