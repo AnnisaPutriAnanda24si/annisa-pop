@@ -63,6 +63,10 @@ Route::get('/logout',[AuthController::class,'logout'])->name('auth.logout');
 Route::post('/login',[AuthController::class,'login'])->name('auth.login');
 Route::get('/auth',[AuthController::class,'index'])->name('auth.auth');
 
+Route::group(['middleware'=>['checkrole:Super Admin']],function(){
+	Route::resource('user', UserController::class);
+});
+
 Route::resource('pelanggan', PelangganController::class);
 Route::resource('user', UserController::class)->middleware('checkislogin');
 Route::resource('multipleuploads', MultipleuploadsController::class);

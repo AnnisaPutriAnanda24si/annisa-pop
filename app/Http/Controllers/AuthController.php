@@ -32,7 +32,7 @@ class AuthController extends Controller
             // session(['name' => Auth::user()->name]);
             session(['last_login' => now()]);
 
-            return redirect()->route('user.index')->with('success', 'Login berhasil!');
+            return redirect()->route('pelanggan.index')->with('success', 'Login berhasil!');
         } else {
             return back()->withErrors(['email' => 'Email atau password salah'])->withInput();
         }
